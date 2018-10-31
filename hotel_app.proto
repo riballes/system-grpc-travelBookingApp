@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.hotel_app";
+option java_outer_classname = "HotelAppProto";
+option objc_class_prefix = "HLW";
+
+package hotel_app;
+
+//The request message containing the selection
+message Selection {
+    string value = 1;
+}
+
+//The response message from the system
+message SysMessage {
+    string message = 1;
+}
+
+//Services provided as List, Reserve and Display
+service HotelApplication {
+    rpc HotelList (Selection) returns (SysMessage) {}
+    rpc HotelReserv (Selection) returns (SysMessage) {} 
+    rpc HotelDisplay (Selection) returns (SysMessage) {}
+}

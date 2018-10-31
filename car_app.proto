@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.car_app";
+option java_outer_classname = "CarAppProto";
+option objc_class_prefix = "HLW";
+
+package car_app;
+
+//The request message containing the selection
+message Selection {
+    string value = 1;
+}
+
+//The response message from the system
+message SysMessage {
+    string message = 1;
+}
+
+//Services provided as List, Reserve and Display
+service CarApplication {
+    rpc CarList (Selection) returns (SysMessage) {}
+    rpc CarReserv (Selection) returns (SysMessage) {} 
+    rpc CarDisplay (Selection) returns (SysMessage) {}
+}
